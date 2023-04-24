@@ -2,33 +2,29 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Board from './components/Board'
+
+import { ChakraBaseProvider, extendBaseTheme } from '@chakra-ui/react'
+import { Button, Box } from '@chakra-ui/react'
+// `@chakra-ui/theme` is a part of the base install with `@chakra-ui/react`
+import chakraTheme from '@chakra-ui/theme'
+
+// const { Button } = chakraTheme.components
+
+// const theme = extendBaseTheme({
+//   components: {
+//     Button,
+//   },
+// })
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  // 2. Wrap ChakraProvider at the root of your app
   return (
-    <>
+    <ChakraBaseProvider>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <Board />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </ChakraBaseProvider>
   )
 }
 
